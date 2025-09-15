@@ -40,7 +40,7 @@ const ContactSection: React.FC = () => {
             <div className="space-y-4 mb-8">
               <div className="flex items-center p-4 bg-white rounded-lg shadow-sm">
                 <Phone className="h-5 w-5 text-green-600 mr-3" />
-                <span>+234 123 456 789</span>
+                <span>+234 803 241 3264</span>
               </div>
               <div className="flex items-center p-4 bg-white rounded-lg shadow-sm">
                 <Mail className="h-5 w-5 text-green-600 mr-3" />
@@ -48,7 +48,7 @@ const ContactSection: React.FC = () => {
               </div>
               <div className="flex items-center p-4 bg-white rounded-lg shadow-sm">
                 <MapPin className="h-5 w-5 text-green-600 mr-3" />
-                <span>123 Farm Road, Agriculture Valley, State 12345</span>
+                <span>Flat 2, Line H, Kamazo GRA, Kaduna</span>
               </div>
             </div>
             

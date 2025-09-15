@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
           <span className="text-lg font-bold">GreenHarvest Agriculture</span>
         </div>
         <p className="text-gray-400">
-          Cultivating excellence in sustainable agriculture since 2009
+          Cultivating excellence in sustainable agriculture since 2019
         </p>
       </div>
     </footer>

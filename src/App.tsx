@@ -16,8 +16,8 @@ const App: React.FC = () => {
         <HeroSection />
         <AboutSection />
         <CropProduction />
-        <GreenhouseOperations />
         <CommunitySection />
+        <GreenhouseOperations />
         <StatsSection />
         <ContactSection />
       </main>
