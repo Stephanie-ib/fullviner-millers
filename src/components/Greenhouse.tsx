@@ -56,7 +56,7 @@ const GreenhouseOperations: React.FC = () => {
             </div>
           </div>
           
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-4">
             {vegetables.map((vegetable, index) => (
             <div key={index}
             className="bg-white w-72 p-5 text-center rounded-xl shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-xl"
