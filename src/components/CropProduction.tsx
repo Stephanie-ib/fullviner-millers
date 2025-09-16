@@ -5,31 +5,31 @@ const CropProduction: React.FC = () => {
     {
       name: "Maize Production",
       image: "🌽",
+      headline: "Premium quality maize grown using advanced irrigation systems and optimal fertilization programs.",
       features: [
-        "Premium quality yellow grain variety",
-        "Enhanced nutritional content",
+        "High yield variables",
         "Drought-resistant strains",
-        "Improved yield crop"
+        "Year-round production"
       ]
     },
     {
       name: "Soya Production",
       image: "🌿",
+      headline: "Nutrient-rich soybeans cultivated with precision agriculture techniques for maximum protein content.",
       features: [
-        "Non-GMO soybeans cultivated with sustainable farming techniques",
-        "High protein content for nutritional excellence",
-        "Organic climate resistant",
+        "High protein varieties",
+        "Organic options available",
         "Sustainable cultivation"
       ]
     },
     {
       name: "Rice Production",
       image: "🌾",
+      headline: "Premium rice varieties grown in controlled environments with optimal water management systems.",
       features: [
-        "Premium rice varieties grown in controlled environments",
-        "Superior grain quality and exceptional taste",
-        "Greenhouse grown",
-        "Quality assured"
+        "Multiple varieties",
+        "Water-efficient growing",
+        "Quality grain production"
       ]
     }
   ];
@@ -52,7 +52,8 @@ const CropProduction: React.FC = () => {
                 {crop.image}
               </div>
               <div className="p-6">
-                <h3 className="text-2xl font-bold mb-4 text-gray-800">{crop.name}</h3>
+                <h3 className="text-2xl font-bold mb-3 text-gray-800">{crop.name}</h3>
+                <h4 className="text-lg mb-3 text-gray-700">{crop.headline}</h4>
                 <ul className="space-y-2">
                   {crop.features.map((feature, idx) => (
                     <li key={idx} className="text-gray-600 flex items-start">

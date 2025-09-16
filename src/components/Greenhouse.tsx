@@ -8,11 +8,24 @@ const GreenhouseOperations: React.FC = () => {
     },
     {
       title: "Hydroponic Systems",
-      description: "Soil-free growing for maximum nutrient efficiency"
+      description: "Soil-less growing for maximum nutrient efficiency"
     },
     {
       title: "LED Growing Lights",
       description: "Energy-efficient lighting for optimal plant growth"
+    }
+  ];
+
+  const vegetables = [
+    {
+      title: "Bell Peppers",
+      image: "🌶️",
+      description: "Colorful, crisp bell peppers grown year-round"
+    },
+    {
+      title: "Cabbage",
+      image: "🥬",
+      description: "Fresh, leafy cabbage with optimal nutrition"
     }
   ];
 
@@ -44,16 +57,17 @@ const GreenhouseOperations: React.FC = () => {
           </div>
           
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-green-100 rounded-lg p-6 text-center hover:bg-green-200 transition-colors">
-              <div className="text-4xl mb-2">🌶️</div>
-              <h4 className="font-semibold">Bell Peppers</h4>
-              <p className="text-sm text-gray-600">Climate controlled year round</p>
+            {vegetables.map((vegetable, index) => (
+            <div key={index}
+            className="bg-white w-72 p-5 text-center rounded-xl shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+            >
+              <div className="w-full mb-3 rounded-lg bg-green-200 p-7 text-3xl hover:bg-green-300 transition-colors">
+                {vegetable.image}
+              </div>
+              <h4 className="font-semibold mb-2">{vegetable.title}</h4>
+              <p className="text-sm text-gray-600">{vegetable.description}</p>
             </div>
-            <div className="bg-green-100 rounded-lg p-6 text-center hover:bg-green-200 transition-colors">
-              <div className="text-4xl mb-2">🥬</div>
-              <h4 className="font-semibold">Cabbage</h4>
-              <p className="text-sm text-gray-600">Fresh, crisp quality nutrition</p>
-            </div>
+            ))}
           </div>
         </div>
       </div>

@@ -5,17 +5,17 @@ const AboutSection: React.FC = () => {
     {
       icon: <Leaf className="h-12 w-12 text-green-600" />,
       title: "Sustainable Farming",
-      description: "We use eco-friendly practices that preserve soil health and reduce environmental impact."
+      description: "We use eco-friendly practices to ensure to long-term soil health and environmental protection."
     },
     {
       icon: <TrendingUp className="h-12 w-12 text-green-600" />,
       title: "Modern Technology",
-      description: "Our state-of-the-art equipment ensures optimal growing conditions year-round."
+      description: "Our state-of-the-art greenhouses and equipment ensures optimal growing conditions year-round."
     },
     {
       icon: <Award className="h-12 w-12 text-green-600" />,
       title: "Quality Produce",
-      description: "We deliver premium quality crops that meet the highest standards."
+      description: "We deliver premium quality crops to meet the highest standards."
     }
   ];
 
