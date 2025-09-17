@@ -4,9 +4,9 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-800 text-white py-8">
       <div className="container mx-auto px-6 text-center">
-        <div className="flex items-center justify-center space-x-2 mb-4">
+        <div className="flex items-center justify-center space-x-2 mb-3">
           <Leaf className="h-6 w-6" />
-          <span className="text-lg font-bold">GreenHarvest Agriculture</span>
+          <span className="text-lg font-bold">Fullvine Millers</span>
         </div>
         <p className="text-gray-400">
           Cultivating excellence in sustainable agriculture since 2019

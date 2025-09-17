@@ -18,7 +18,13 @@ const Header: React.FC = () => {
     setIsMenuOpen(false);
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const headerHeight = 60;
+      const elementPosition = element.offsetTop - headerHeight;
+
+      window.scrollTo({
+        top: elementPosition,
+        behavior: "smooth"
+      });
     }
   };
 
