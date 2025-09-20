@@ -1,5 +1,6 @@
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Mail, MapPin, Phone, CheckCircle, X, AlertCircle } from "lucide-react";
 import { useState } from "react";
+//import emailjs from 'emailjs-com';
 
 const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +9,10 @@ const ContactSection: React.FC = () => {
     subject: '',
     message: ''
   });
+  
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -16,15 +21,97 @@ const ContactSection: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Message sent successfully!');
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setIsSubmitting(true);
+    setShowError(false);
+    
+    try {
+      await emailjs.send(
+        'YOUR_SERVICE_ID',
+        'YOUR_TEMPLATE_ID',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        'YOUR_PUBLIC_KEY'
+      );
+      
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setShowSuccess(true);
+      
+      // Auto-hide notification after 5 seconds
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 5000);
+      
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setShowError(true);
+      
+      // Auto-hide error notification after 5 seconds
+      setTimeout(() => {
+        setShowError(false);
+      }, 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const closeNotification = (type: 'success' | 'error') => {
+    if (type === 'success') {
+      setShowSuccess(false);
+    } else {
+      setShowError(false);
+    }
   };
 
   return (
-    <section id="contact" className="py-16 bg-gray-50">
+    <section id="contact" className="py-16 bg-gray-50 relative">
+      {/* Success Notification */}
+      {showSuccess && (
+        <div className="fixed top-4 right-4 z-50" style={{
+          animation: 'slideInRight 0.3s ease-out'
+        }}>
+          <div className="bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg flex items-center space-x-3 max-w-sm">
+            <CheckCircle className="h-5 w-5 flex-shrink-0" />
+            <div className="flex-1">
+              <p className="font-semibold">Message Sent Successfully!</p>
+              <p className="text-sm opacity-90">We'll get back to you soon.</p>
+            </div>
+            <button
+              onClick={() => closeNotification('success')}
+              className="text-white hover:text-gray-200 transition-colors"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Error Notification */}
+      {showError && (
+        <div className="fixed top-4 right-4 z-50" style={{
+          animation: 'slideInRight 0.3s ease-out'
+        }}>
+          <div className="bg-red-500 text-white px-6 py-4 rounded-lg shadow-lg flex items-center space-x-3 max-w-sm">
+            <AlertCircle className="h-5 w-5 flex-shrink-0" />
+            <div className="flex-1">
+              <p className="font-semibold">Failed to Send Message</p>
+              <p className="text-sm opacity-90">Please try again later.</p>
+            </div>
+            <button
+              onClick={() => closeNotification('error')}
+              className="text-white hover:text-gray-200 transition-colors"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-800 mb-4">Get In Touch</h2>
@@ -81,6 +168,7 @@ const ContactSection: React.FC = () => {
                   className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
                   placeholder="Your full name"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
               <div>
@@ -93,6 +181,7 @@ const ContactSection: React.FC = () => {
                   className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
                   placeholder="your.email@example.com"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
             </div>
@@ -107,6 +196,7 @@ const ContactSection: React.FC = () => {
                 className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
                 placeholder="What is this about?"
                 required
+                disabled={isSubmitting}
               />
             </div>
             
@@ -120,14 +210,16 @@ const ContactSection: React.FC = () => {
                 className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all resize-none"
                 placeholder="Tell us more about your inquiry..."
                 required
+                disabled={isSubmitting}
               ></textarea>
             </div>
             
             <button
               onClick={handleSubmit}
-              className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-all duration-300 transform hover:scale-105"
+              disabled={isSubmitting}
+              className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
             >
-              Send Message
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </button>
           </div>
         </div>
@@ -136,4 +228,4 @@ const ContactSection: React.FC = () => {
   );
 };
 
-export default ContactSection
+export default ContactSection;

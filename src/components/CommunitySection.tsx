@@ -89,7 +89,7 @@ const CommunitySection: React.FC = () => {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="p-6 bg-white shadow-md  rounded-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              className="p-6 bg-white shadow-md  rounded-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
             >
               <div className="text-4xl font-bold text-green-600 mb-2">
                 {stat.number}
