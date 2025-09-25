@@ -15,7 +15,7 @@ const AboutSection: React.FC = () => {
     {
       icon: <Award className="h-12 w-12 text-green-600" />,
       title: "Quality Produce",
-      description: "We deliver premium quality crops to meet the highest standards."
+      description: "We deliver premium quality crops and vegetables to meet the highest standards."
     }
   ];
 
@@ -31,12 +31,12 @@ const AboutSection: React.FC = () => {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-5">
           {features.map((feature, index) => (
-            <div key={index} className="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2">
-              <div className="flex justify-center mb-4">{feature.icon}</div>
+            <div key={index} className="text-center p-3 bg-white rounded-lg max-w-6xl mx-auto px-6 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2">
+              <div className="flex justify-center mb-3">{feature.icon}</div>
               <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-gray-600">{feature.description}</p>
+              <p className="text-gray-600 mb-3">{feature.description}</p>
             </div>
           ))}
         </div>
