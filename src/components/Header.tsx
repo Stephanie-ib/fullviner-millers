@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Leaf, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,7 +30,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="bg-green-700 text-white fixed w-full top-0 z-50 shadow-lg">
-      <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
+      <nav className="container mx-auto px-6 py-3 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-2">
           <img
