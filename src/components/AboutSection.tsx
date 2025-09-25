@@ -20,7 +20,8 @@ const AboutSection: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-16 bg-gray-50">
+    <section id="about" className="py-16 bg-gray-50
+    style={{ backgroundImage: url('/assets/about-bg.jpg')}} ">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-800 mb-4">About GreenHarvest Agriculture</h2>

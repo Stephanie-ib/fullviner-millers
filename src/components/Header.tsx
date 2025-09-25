@@ -23,7 +23,7 @@ const Header: React.FC = () => {
 
       window.scrollTo({
         top: elementPosition,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     }
   };
@@ -33,7 +33,12 @@ const Header: React.FC = () => {
       <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-2">
-          <Leaf className="h-8 w-8" />
+          <img
+            src="logo.png"
+            alt="Fullvine Millers Logo"
+            className="h-10 w-auto cursor-pointer"
+            onClick={() => scrollToSection("home")}
+          />
           <span className="text-xl font-bold">Fullvine Millers</span>
         </div>
 
